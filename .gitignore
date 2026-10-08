@@ -5,3 +5,6 @@
 # Python
 __pycache__/
 .venv/
+
+# Локални build артефакти (release assets)
+dist/

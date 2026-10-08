@@ -1,0 +1,7 @@
+[project]
+name = "terminology-indexes"
+version = "0.1.0"
+requires-python = ">=3.13"
+dependencies = [
+    "jsonschema[format-nongpl]>=4.26.0",
+]

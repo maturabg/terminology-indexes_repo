@@ -1,3 +1,7 @@
 # SQLite артефактите се публикуват само като release assets
 *.sqlite
 *.sqlite.zst
+
+# Python
+__pycache__/
+.venv/

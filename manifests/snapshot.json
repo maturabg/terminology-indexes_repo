@@ -1,0 +1,18 @@
+{
+  "snapshot": "2026.10.08",
+  "schema_version": 1,
+  "schema_sha256": "63f17201f4e58361f84f37c0fb1c7bda9861da28431c7d126f2dc0035a60b198",
+  "generated_at": "2026-10-08T20:23:04Z",
+  "sources": [
+    {
+      "source": "python_glossary",
+      "file": "indexes/python_glossary.jsonl",
+      "records": 177,
+      "sha256": "420637278cbca7c780688804c9a3aef18732dfb98a43dcf4d2a670dbfc8b7aec",
+      "source_version": "3.14 (sha256:49b99d2c8ad6)",
+      "retrieved_at": "2026-10-08T20:22:33Z",
+      "license": "PSF-2.0",
+      "content_policy": "metadata_only"
+    }
+  ]
+}

@@ -41,3 +41,11 @@ SELECT c.term, c.url, c.fragment
 FROM candidates_fts f JOIN candidates c ON c.rowid = f.rowid
 WHERE candidates_fts MATCH 'generator' ORDER BY rank LIMIT 10;
 ```
+
+## Consumer
+
+[`ulsit46420/gdf`](https://github.com/ulsit46420/gdf) заключва snapshot в `indexes.lock.yaml`
+(`schema_version`, `repo`, `snapshot`, `asset`, `sha256`) и го сваля с
+`uv run scripts/fetch_indexes.py` — по фиксиран tag, с проверка на SHA-256 и на
+`meta.snapshot`/`meta.schema_version` в базата. Нов snapshot = ръчна промяна на lock-а
+(`sha256` е редът за `.sqlite.zst` от `SHA256SUMS` на release-а).

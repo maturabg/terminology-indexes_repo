@@ -1,0 +1,95 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://github.com/maturabg/terminology-indexes_repo/schema/candidate.schema.json",
+  "title": "Terminology candidate",
+  "description": "Един ред в indexes/<source>.jsonl: термин от външен източник, кандидат за обогатяване.",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "source",
+    "candidate_id",
+    "term",
+    "normalized_term",
+    "url",
+    "source_version",
+    "retrieved_at",
+    "license",
+    "content_policy"
+  ],
+  "properties": {
+    "source": {
+      "description": "Идентификатор на източника; съвпада с името на builders/<source>.py.",
+      "type": "string",
+      "pattern": "^[a-z0-9][a-z0-9_-]*$"
+    },
+    "candidate_id": {
+      "description": "Стабилен, уникален в рамките на snapshot-а идентификатор; служи за ключ при стабилно сортиране.",
+      "type": "string",
+      "minLength": 1
+    },
+    "term": {
+      "description": "Терминът така, както е изписан в източника.",
+      "type": "string",
+      "minLength": 1
+    },
+    "normalized_term": {
+      "description": "Нормализирана форма за търсене (напр. casefold, без излишни интервали).",
+      "type": "string",
+      "minLength": 1
+    },
+    "aliases": {
+      "description": "Алтернативни изписвания/синоними.",
+      "type": "array",
+      "items": { "type": "string", "minLength": 1 },
+      "uniqueItems": true,
+      "default": []
+    },
+    "title": {
+      "description": "Заглавие на страницата/раздела, в който е терминът.",
+      "type": ["string", "null"]
+    },
+    "url": {
+      "description": "Каноничен URL към дефиницията (без fragment).",
+      "type": "string",
+      "format": "uri",
+      "pattern": "^https?://"
+    },
+    "fragment": {
+      "description": "Anchor в страницата, без водещ '#'.",
+      "type": ["string", "null"]
+    },
+    "definition_excerpt": {
+      "description": "Кратък откъс от дефиницията; допустим само при content_policy, различен от metadata_only.",
+      "type": ["string", "null"]
+    },
+    "source_version": {
+      "description": "Версия, дата, commit или ETag на изтегления източник.",
+      "type": "string",
+      "minLength": 1
+    },
+    "retrieved_at": {
+      "description": "Момент на изтегляне, RFC 3339 (UTC).",
+      "type": "string",
+      "format": "date-time"
+    },
+    "license": {
+      "description": "Лиценз на съдържанието, за предпочитане SPDX идентификатор.",
+      "type": "string",
+      "minLength": 1
+    },
+    "attribution": {
+      "description": "Текст за атрибуция, когато лицензът го изисква.",
+      "type": ["string", "null"]
+    },
+    "content_policy": {
+      "description": "Какво съдържание от източника е позволено да се съхранява.",
+      "enum": ["metadata_only", "excerpts_allowed", "licensed"]
+    }
+  },
+  "if": {
+    "properties": { "content_policy": { "const": "metadata_only" } }
+  },
+  "then": {
+    "properties": { "definition_excerpt": { "type": "null" } }
+  }
+}

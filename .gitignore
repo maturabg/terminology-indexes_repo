@@ -1,0 +1,3 @@
+# SQLite артефактите се публикуват само като release assets
+*.sqlite
+*.sqlite.zst

@@ -22,7 +22,7 @@
 
 Избери най-лесния източник за пръв опит — препоръка: Git Glossary или Python objects.inv (стабилен формат, малък обем, няма лицензионни усложнения).
 
-1. builders/<source>.py: изтегля суровия източник, парсира go, записва indexes/<source>.jsonl (един кандидат на ред, сортиран стабилно по candidate_id).
+1. builders/<source>.py: изтегля суровия източник, парсира го, записва indexes/<source>.jsonl (един кандидат на ред, сортиран стабилно по candidate_id).
 2. Валидация на изхода срещу schema/candidate.schema.json (брой записи > 0, уникални candidate_id, валидни URL формати).
 3. manifests/snapshot.json: версия на snapshot-а, списък на включените source, timestamp.
 4. Ръчно изпълнение локално, преглед на резултата — без workflow все още.
